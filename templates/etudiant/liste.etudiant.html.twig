@@ -1,32 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClasseController!{% endblock %}
+{% block title %}Hello EtudiantController!{% endblock %}
 
 {% block body %}
 <div class="container">
-<nav class="navbar navbar-light pb-2 bg-primary">
+<nav class="navbar navbar-light pb-2 bg-info">
   <a class="navbar-brand" href="">{{titre}}</a>
 </nav>
 </div>
 
- <table class="table  table-bordered table-hover table-light text-center" >
+<table class="table  table-bordered table-hover table-light text-center" >
         <thead class="table bg-dark text-white">
             <tr>
                 <th scope="col">N°</th>
-                <th scope="col">Libelle</th>
-                <th scope="col">Filiere</th>
-                <th scope="col">Niveau</th>
+                <th scope="col">Nom Complet</th>
+                <th scope="col">login</th>
+                <th scope="col">Role</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
   <tbody>
   {% set i = 0 %}
-{% for classe in classes%}
+{% for etudiant in etudiants%}
     <tr>
       <td> {% set i = i + 1 %}{{ i }}</td>
-      <td>{{ classe.libelle }}</td>
-      <td>{{ classe.filiere }}</td>
-      <td>{{ classe.niveau }}</td>
+      <td>{{ etudiant.nomComplet }}</td>
+      <td>{{ etudiant.login }}</td>
+      <td>{{ etudiant.role }}</td>
       
       <td> 
       <button type="button" class="btn btn-outline-success">Détails</button>

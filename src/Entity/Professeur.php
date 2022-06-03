@@ -2,31 +2,32 @@
 
 namespace App\Entity;
 
-use App\Repository\ProfesseurRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Personne;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfesseurRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
-class Professeur
+class Professeur extends Personne
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    protected $id;
 
     #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'professeurs')]
-    private $classes;
+    protected $classes;
 
     #[ORM\Column(type: 'string', length: 25)]
-    private $grade;
+    protected $grade;
 
     #[ORM\ManyToMany(targetEntity: Module::class, inversedBy: 'professeurs')]
-    private $modules;
+    protected $modules;
 
     #[ORM\ManyToOne(targetEntity: RP::class, inversedBy: 'professeurs')]
     #[ORM\JoinColumn(nullable: false)]
-    private $rP;
+    protected $rP;
 
     public function __construct()
     {

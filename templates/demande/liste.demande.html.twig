@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DemandeController!{% endblock %}
+
+{% block body %}
+<div class="container">
+<nav class="navbar navbar-light pb-2 bg-success">
+  <a class="navbar-brand" href="">{{titre}}</a>
+</nav>
+</div>
+
+
+<table class="table  table-bordered table-hover table-light text-center" >
+        <thead class="table bg-dark text-white">
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Motif</th>
+                <th scope="col">Nom Étudiant</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+  <tbody>
+  {% set i = 0 %}
+{% for demande in demandes %}
+    <tr>
+      <td> {% set i = i + 1 %}{{ i }}</td>
+      <td>{{ demande.libelleDemande }}</td>
+      <td>{{ demande.etudiant.nomComplet }}</td>
+      <td>{{ demande.date|date }}</td>
+      
+      <td> 
+      <button type="button" class="btn btn-outline-dark">Détails</button>
+        <button type="button" class="btn btn-outline-success">Valider</button>
+        <a  class="btn btn-outline-danger" href="">Refuser</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
