@@ -20,7 +20,7 @@ class ModuleController extends AbstractController
         ]);
     }
 
-    #[Route('/module/ajout', name: 'app_module')]
+    #[Route('/module/ajout', name: 'app_module_ajout')]
     public function ajouterModule(): Response
     {
         return $this->render('module/ajout.module.html.twig', [

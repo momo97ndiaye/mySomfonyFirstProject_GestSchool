@@ -23,7 +23,7 @@ class Etudiant extends User
     #[ORM\Column(type: 'string', length: 20)]
     private $adresse;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'string', length: 30)]
     private $sexe;
 
     public function __construct()
@@ -118,15 +118,19 @@ class Etudiant extends User
         return $this;
     }
 
-    public function isSexe(): ?bool
+    public function getSexe(): ?string
     {
         return $this->sexe;
     }
 
-    public function setSexe(bool $sexe): self
+    public function setSexe(string $sexe): self
     {
         $this->sexe = $sexe;
 
         return $this;
+    }
+
+    public function __toString(): string{
+        return $this->nomComplet;
     }
 }

@@ -31,7 +31,7 @@ class DemandeFixtures extends Fixture
         $etu->setPassword($faker->password());
         $etu->setMatricule("MAT001");
         $etu->setAdresse($faker->streetName());
-        $etu->setSexe(1);
+        $etu->setSexe("Masculin");
         $etu->setRole('ROLE_ETUDIANT');
         $manager->persist($etu);
 

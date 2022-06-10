@@ -8,6 +8,8 @@ use App\Entity\RP;
 use App\Entity\Etudiant;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+#use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+#use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\InheritanceType("JOINED")]
@@ -15,7 +17,7 @@ use App\Repository\UserRepository;
 #[ORM\DiscriminatorMap(["rp" => "RP", "ac" =>
 "AC","etudiant"=>"Etudiant"])]
 
-class User extends Personne
+class User extends Personne /* implements UserInterface,PasswordAuthenticatedUserInterface */
 {
 
     #[ORM\Column(type: 'string', length: 50)]
