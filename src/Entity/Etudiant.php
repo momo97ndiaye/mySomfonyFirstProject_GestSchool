@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\EtudiantRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EtudiantRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant extends User
@@ -93,6 +94,8 @@ class Etudiant extends User
 
         return $this;
     }
+
+  
 
     public function getMatricule(): ?string
     {

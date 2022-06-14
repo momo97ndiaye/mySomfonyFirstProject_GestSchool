@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Classe;
 use App\Form\EtudiantType;
 use App\Entity\Inscription;
+use App\Entity\AnneeScolaire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,16 +19,16 @@ class InscriptionType extends AbstractType
             ->add('classe',EntityType::class, [
                 'class' => Classe::class,
                 'choice_label' => 'libelle',
-                'attr'=>[
-                    'class'=>'select form-control-lg'
-                ],
-                'label'=>" "
-            ])
+                'label'=>" Classe "
+            ])  
             /* ->add('anneeScolaire') */
            /*  ->add('etudiant',CollectionType::class,[
                 'entry_type' => EtudiantType::class
             ])  */
-            ->add('etudiant',EtudiantType::class)
+            ->add('etudiant',EtudiantType::class,[
+                'label' => 'Etudiant',])
+            
+            
         ;
     }
 

@@ -16,7 +16,7 @@ class ProfesseurFixtures extends Fixture
 
         $rp =new RP();
         $rp->setNomComplet($faker->firstName()." ".$faker->lastName());
-        $rp->setLogin($faker->email());
+        $rp->setEmail($faker->email());
         $rp->setPassword($faker->password());
         $rp->setRole('ROLE_RP');
         $manager->persist($rp);

@@ -21,6 +21,9 @@ class AnneeScolaire
     #[ORM\Column(type: 'string', length: 20)]
     private $libelle;
 
+    #[ORM\Column(type: 'string', length: 50)]
+    private $etat;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -75,5 +78,17 @@ class AnneeScolaire
 
     public function __toString(): string{
         return $this->libelle;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(string $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
     }
 }

@@ -19,14 +19,14 @@ class InscriptionFixtures extends Fixture
 
             $rp =new RP();
             $rp->setNomComplet('Mamadou Ndiaye');
-            $rp->setLogin('momodoundiaye@gmail.com');
+            $rp->setEmail($faker->email());
             $rp->setPassword('passer');
             $rp->setRole('ROLE_RP');
             $manager->persist($rp);
             
             $ac = new AC();
             $ac->setNomComplet($faker->firstName()." ".$faker->lastName());
-            $ac->setLogin($faker->email());
+            $ac->setEmail($faker->email());
             $ac->setPassword($faker->password());
             $ac->setRole('ROLE_AC');
             $manager->persist($ac);
@@ -40,7 +40,7 @@ class InscriptionFixtures extends Fixture
 
             $etu = new Etudiant();
             $etu->setNomComplet($faker->firstName()." ".$faker->lastName());
-            $etu->setLogin($faker->email());
+            $etu->setEmail($faker->email());
             $etu->setPassword($faker->password());
             $etu->setMatricule("MAT001");
             $etu->setAdresse("Sicap Foire");

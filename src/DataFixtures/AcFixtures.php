@@ -22,7 +22,7 @@ class AcFixtures extends Fixture
         $faker= Factory::create("fr_Fr");
         $rp =new RP();
         $rp->setNomComplet($faker->firstName()." ".$faker->lastName());
-        $rp->setLogin($faker->email());
+        $rp->setEmail($faker->email());
         $rp->setPassword($faker->password());
         $rp->setRole('ROLE_RP');
         $manager->persist($rp);
@@ -30,7 +30,7 @@ class AcFixtures extends Fixture
 
             $ac = new AC();
             $ac->setNomComplet($faker->firstName()." ".$faker->lastName());
-            $ac->setLogin($faker->email());
+            $ac->setEmail($faker->email());
             $ac->setPassword($faker->password());
             $ac->setRole('ROLE_AC');
             $manager->persist($ac);

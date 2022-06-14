@@ -23,10 +23,10 @@ class EtudiantType extends AbstractType
 
         $builder
             ->add('nomComplet')
-            ->add('role')
-            ->add('login')
-            ->add('password')
-            ->add('matricule')
+            //->add('role')
+            ->add('email')
+            //->add('password')
+            //->add('matricule')
             ->add('adresse')
             ->add('sexe', ChoiceType::class, [
                 'choices' => [

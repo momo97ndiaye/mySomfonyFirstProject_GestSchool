@@ -21,7 +21,7 @@ class Inscription
     #[ORM\JoinColumn(nullable: false)]
     private $anneescolaire;
 
-    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions')]
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions', cascade:["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;
 

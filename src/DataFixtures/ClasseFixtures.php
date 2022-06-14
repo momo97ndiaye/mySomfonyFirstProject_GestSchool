@@ -19,10 +19,11 @@ class ClasseFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $faker= Factory::create("fr_Fr");
 
         $rp =new RP();
         $rp->setNomComplet('Mamadou Ndiaye');
-        $rp->setLogin('momodoundiaye@gmail.com');
+        $rp->setEmail($faker->email());
         $rp->setPassword('passer');
         $rp->setRole('ROLE_RP');
         $manager->persist($rp);

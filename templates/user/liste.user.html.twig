@@ -25,10 +25,12 @@
     <tr>
       <td> {% set i = i + 1 %}{{ i }}</td>
       <td>{{ user.nomComplet }}</td>
-      <td>{{ user.login }}</td>
-      <td>{{ user.role }}</td>
+      <td>{{ user.email }}</td>
       
+      <td>{{ user.roles[0] }}</td>
+
       <td> 
+      
       <button type="button" class="btn btn-outline-success">Détails</button>
         <button type="button" class="btn btn-outline-dark">Modifier</button>
         <a  class="btn btn-outline-danger" href="">Archiver</a>

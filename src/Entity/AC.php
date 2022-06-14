@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Repository\ACRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ACRepository::class)]
 class AC extends User
@@ -50,10 +51,24 @@ class AC extends User
 
         return $this;
     }
+   /*  public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_AC';
 
+        return array_unique($roles);
+    }
+ */
+   /*  public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    } */
     public function __toString(): string{
         return $this->nomComplet;
     }
 
-    
+
 }

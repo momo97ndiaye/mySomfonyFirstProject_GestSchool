@@ -20,14 +20,14 @@ class DemandeFixtures extends Fixture
 
         $rp =new RP();
         $rp->setNomComplet('Mamadou Ndiaye');
-        $rp->setLogin('momodoundiaye@gmail.com');
+        $rp->setEmail($faker->email());
         $rp->setPassword('passer');
         $rp->setRole('ROLE_RP');
         $manager->persist($rp);
 
         $etu = new Etudiant();
         $etu->setNomComplet($faker->firstName()." ".$faker->lastName());
-        $etu->setLogin($faker->email());
+        $etu->setEmail($faker->email());
         $etu->setPassword($faker->password());
         $etu->setMatricule("MAT001");
         $etu->setAdresse($faker->streetName());

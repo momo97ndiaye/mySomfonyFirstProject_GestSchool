@@ -13,7 +13,7 @@ class UserController extends AbstractController
     public function listerUser(UserRepository $repo): Response
     {
         $users= $repo->findAll();
-        
+        //dd($users);
         return $this->render('user/liste.user.html.twig', [
             'controller_name' => 'UserController',
             "titre"=>"Liste des Utilisateurs",
