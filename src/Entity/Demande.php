@@ -22,11 +22,17 @@ class Demande
     protected $etudiant;
 
     #[ORM\ManyToOne(targetEntity: RP::class, inversedBy: 'demandes')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     protected $rP;
 
     #[ORM\Column(type: 'date')]
     protected $date;
+
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private $motif;
+
+    #[ORM\Column(type: 'string', length: 25, nullable: true)]
+    private $etat;
 
     public function getId(): ?int
     {
@@ -77,6 +83,30 @@ class Demande
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getMotif(): ?string
+    {
+        return $this->motif;
+    }
+
+    public function setMotif(?string $motif): self
+    {
+        $this->motif = $motif;
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

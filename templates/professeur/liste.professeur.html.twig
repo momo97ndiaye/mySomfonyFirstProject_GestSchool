@@ -15,7 +15,6 @@
                 <th scope="col">N°</th>
                 <th scope="col">Nom Complet</th>
                 <th scope="col">Grade</th>
-                <th scope="col">Role</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -26,8 +25,8 @@
       <td> {% set i = i + 1 %}{{ i }}</td>
       <td>{{ prof.nomComplet }}</td>
       <td>{{ prof.grade }}</td>
-      <td>{{ prof.role }}</td>
-      
+{#       <td>{{ prof.roles[0] }}</td>
+ #}      
       <td> 
       <button type="button" class="btn btn-outline-success">Détails</button>
         <button type="button" class="btn btn-outline-dark">Modifier</button>

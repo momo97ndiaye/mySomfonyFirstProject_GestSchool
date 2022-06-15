@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
+use App\Form\ModuleFormType;
 use App\Repository\ModuleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,11 +25,21 @@ class ModuleController extends AbstractController
     }
 
     #[Route('/module/ajout', name: 'app_module_ajout')]
-    public function ajouterModule(): Response
+    public function ajouterModule(Request $request, EntityManagerInterface $EntityManager): Response
     {
-        return $this->render('module/ajout.module.html.twig', [
-            'controller_name' => 'ModuleController',
+        $module = new Module;
+        $form = $this->createForm(ModuleFormType::class,$module);
+        $form->handleRequest($request);
+        $user = $this->getUser();
+        if ($form->isSubmitted() && $form->isValid()){
             
+
+            $EntityManager->persist($module);
+            $EntityManager->flush();
+        } 
+
+        return $this->render('module/ajout.module.html.twig', [
+            "form"=>$form->createView(),
         ]);
     }
 }

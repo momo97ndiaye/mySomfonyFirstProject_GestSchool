@@ -37,50 +37,17 @@ class InscriptionController extends AbstractController
             $etudiant->setPassword($passHash);
             $etudiant->setMatricule("Mat001");
             $etudiant->setRoles(['ROLE_ETUDIANT']);
-            $etudiant->setAdresse('Sicap Foire');
             $ins->setAnneescolaire($anneescolaire);
             $ins->setAC($user);
             $EntityManager->persist($ins);
             $EntityManager->flush();
+            $lastId = $etudiant->getId();
+            //dd($lastId);
         }
         
 
         return $this->render('inscription/inscrire.html.twig', [
             'form' => $form->createView(),
-        ]);
-    }
-
-    #[Route('/add-inscription', name: 'add_inscription')]
-    public function add(
-    Request $request,
-    InscriptionRepository $repo,
-    EtudiantRepository $reposit,
-    UserPasswordHasherInterface $passwordHasher): Response
-    {
-            $id=$reposit->findBy([],['id'=>'DESC'])[0]->getId()+1;
-            $user = $this->getUser();
-            $inscription=new Inscription;
-            $etud=new Etudiant;
-            $hashedPassword = $passwordHasher->hashPassword(
-                $etud,
-                "ETUD"
-            );
-            $etud->setPassword($hashedPassword);
-            $etud->setMatricule("MAT--".$id);
-            $inscription->setEtudiant($etud);
-            $inscription->setAC($user);
-            $form = $this->createForm(InscriptionType::class,$inscription);
-            $form->handleRequest($request);
-            if($form->isSubmitted() && $form->isValid())
-            {
-                $name=explode(' ',$inscription->getEtudiant()->getNomComplet());
-                $name=strtolower($name[0]);
-                $etud->setLogin($name.$id.'@proacedemy.com');
-                $repo->add($inscription,true);
-                return $this->redirectToRoute('app_inscription');
-            }
-        return $this->render('inscription/create.html.twig', [
-            'form'=>$form->createView()
         ]);
     }
 

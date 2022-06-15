@@ -2,19 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Professeur;
+use App\Entity\Demande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class ProfesseurFormType extends AbstractType
+class DemandeFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomComplet')
-            ->add('grade')
+            ->add('motif')
+            ->add('libelleDemande', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+            ])
             ->add('Ajouter',SubmitType::class)
         ;
     }
@@ -22,7 +25,7 @@ class ProfesseurFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Professeur::class,
+            'data_class' => Demande::class,
         ]);
     }
 }

@@ -19,16 +19,9 @@ class InscriptionType extends AbstractType
             ->add('classe',EntityType::class, [
                 'class' => Classe::class,
                 'choice_label' => 'libelle',
-                'label'=>" Classe "
-            ])  
-            /* ->add('anneeScolaire') */
-           /*  ->add('etudiant',CollectionType::class,[
-                'entry_type' => EtudiantType::class
-            ])  */
+                'label'=>" Classe "])
             ->add('etudiant',EtudiantType::class,[
                 'label' => 'Etudiant',])
-            
-            
         ;
     }
 

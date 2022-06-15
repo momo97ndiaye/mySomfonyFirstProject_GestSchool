@@ -35,11 +35,11 @@ class ProfesseurController extends AbstractController
         $prof = new Professeur;
         $form = $this->createForm(ProfesseurFormType::class,$prof);
         $form->handleRequest($request);
+        $user = $this->getUser();
         if ($form->isSubmitted() && $form->isValid()){
             
 
-            $prof->setRole('ROLE_PROFESSEUR');
-            $prof->setRP($rp);
+            $prof->setRp($user);
             $EntityManager->persist($prof);
             $EntityManager->flush();
         }
